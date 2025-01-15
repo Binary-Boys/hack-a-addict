@@ -1,19 +1,19 @@
 // events_page.dart
 import 'package:flutter/material.dart';
 
-class EventsPage extends StatelessWidget {
-  const EventsPage({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Events'),
+        title: const Text('Profile'),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: const Center(
-        child: Text('Events Page Content'),
+        child: Text('Profile Page Content'),
       ),
     );
   }

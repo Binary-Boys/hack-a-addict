@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackaddict/userhomescreen.dart';
+import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
 
 class UserLoginScreen extends StatelessWidget {
   const UserLoginScreen({super.key});
