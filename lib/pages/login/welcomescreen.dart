@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackaddict/pages/login/userSignUp.dart';
 import 'package:hackaddict/pages/login/userlogin.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -64,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const UserLoginScreen()),
+                              builder: (context) => UserLoginScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -85,6 +86,10 @@ class WelcomeScreen extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {
                         // Handle register
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => UserSignUp()),
+                        );
                       },
                       child: const Text(
                         'Register',

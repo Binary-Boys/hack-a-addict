@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1084331763047",
+    "project_id": "hack-a-addict",
+    "storage_bucket": "hack-a-addict.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084331763047:android:c3a7a970e4db5cc835fbc2",
+        "android_client_info": {
+          "package_name": "com.example.hackaddict"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk5R5tUaDs9RupC2_Mm9rQq1zC3xIKRPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
