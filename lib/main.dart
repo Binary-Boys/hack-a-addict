@@ -1,13 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hackaddict/firebase_options.dart';
 import 'package:hackaddict/pages/Profile/profile.dart';
 import 'package:hackaddict/pages/events_module/events_screen.dart';
+import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
+import 'package:hackaddict/pages/login/userlogin.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
 import 'package:hackaddict/pages/progress_tracker/progress_screen.dart';
 import 'package:hackaddict/pages/report_screen/reportscreen.dart';
 import 'package:hackaddict/pages/saved_posts/saved_posts.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +42,20 @@ class MyApp extends StatelessWidget {
         // '/settings': (context) => const SettingsScreen(),
         // ... existing routes
       },
-      home: const WelcomeScreen(),
+      // home: const WelcomeScreen(),
+      home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapsot) {
+            if (snapsot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapsot.data != null) {
+              return UserHomeScreen();
+            }
+            return const WelcomeScreen();
+          }),
     );
   }
 }

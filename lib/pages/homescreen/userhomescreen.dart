@@ -1,5 +1,7 @@
 // userhomescreen.dart
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hackaddict/pages/login/welcomescreen.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({super.key});
@@ -10,6 +12,14 @@ class UserHomeScreen extends StatefulWidget {
 
 class _UserHomeScreenState extends State<UserHomeScreen> {
   int _selectedIndex = 0;
+
+  Future<void> handleSignOut(context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) {
+      return WelcomeScreen();
+    }), (ctx) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +145,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             _buildDrawerItem(
               icon: Icons.logout,
               title: 'Sign Out',
-              onTap: () => Navigator.pushReplacementNamed(context, '/'),
+              onTap: () => handleSignOut(context),
             ),
           ],
         ),

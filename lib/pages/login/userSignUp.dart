@@ -1,22 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
-import 'package:hackaddict/pages/login/userSignUp.dart';
+import 'package:hackaddict/pages/login/userlogin.dart';
 
-class UserLoginScreen extends StatelessWidget {
-  UserLoginScreen({super.key});
+class UserSignUp extends StatelessWidget {
+  UserSignUp({super.key});
 
   final _emailController = TextEditingController();
+
   final _passwordController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
-  Future<void> handleLogin(context) async {
+  Future<void> handleSignUp(context) async {
     try {
       if (_formKey.currentState!.validate()) {
         final userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
+            .createUserWithEmailAndPassword(
                 email: _emailController.text.trim(),
                 password: _passwordController.text.trim());
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const UserHomeScreen()),
@@ -26,7 +29,7 @@ class UserLoginScreen extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         backgroundColor: Colors.red,
         content: Text(e.message!),
-        duration: Duration(seconds: 3),
+        duration: Duration(seconds: 5),
         margin: EdgeInsets.all(20),
         behavior: SnackBarBehavior.floating,
       ));
@@ -44,23 +47,24 @@ class UserLoginScreen extends StatelessWidget {
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 50),
                   const Text(
-                    'User Login',
+                    'User Sign up',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF2563EB),
                     ),
-                    textAlign: TextAlign.center,
                   ),
                   const Text(
-                    'Welcome back you\'ve been missed!',
+                    'Create an account so you can explore all the existing communities',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black87,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 50),
                   TextFormField(
@@ -119,8 +123,7 @@ class UserLoginScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () async {
                         // Navigate to homepage
-
-                        await handleLogin(context);
+                        await handleSignUp(context);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF2563EB),
@@ -130,27 +133,32 @@ class UserLoginScreen extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        'Sign in',
+                        'Sign up',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
                   Center(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>  UserSignUp()),
-                        );
-                      },
-                      child: const Text(
-                        'Create new account',
-                        style: TextStyle(color: Color(0xFF2563EB)),
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Aldready have an account"),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserLoginScreen()),
+                          );
+                        },
+                        child: const Text(
+                          'User Login',
+                          style: TextStyle(color: Color(0xFF2563EB)),
+                        ),
                       ),
-                    ),
-                  ),
+                    ],
+                  )),
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
