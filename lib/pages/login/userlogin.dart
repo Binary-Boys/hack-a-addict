@@ -84,7 +84,10 @@ class UserLoginScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text('Sign in'),
+                  child: const Text(
+                    'Sign in',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),

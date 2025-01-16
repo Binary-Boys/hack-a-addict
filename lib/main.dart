@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
         '/report': (context) => const ReportScreen(),
         '/events': (context) => const EventsScreen(),
         '/saved': (context) => const SavedPostsScreen(),
-        '/rehab': (context) => const RehabScreen(),
+        // '/rehab': (context) => const RehabScreen(),
         '/progress': (context) => const ProgressScreen(),
-        '/care': (context) => const CareScreen(),
-        '/settings': (context) => const SettingsScreen(),
+        // '/care': (context) => const CareScreen(),
+        // '/settings': (context) => const SettingsScreen(),
         // ... existing routes
       },
       home: const WelcomeScreen(),
