@@ -41,46 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC1R2caYG6twmqGZgcp92a_ZHRkHA1BKoI',
-    appId: '1:1084331763047:web:9cc2c72f287032a335fbc2',
-    messagingSenderId: '1084331763047',
-    projectId: 'hack-a-addict',
-    authDomain: 'hack-a-addict.firebaseapp.com',
-    storageBucket: 'hack-a-addict.firebasestorage.app',
+    apiKey: 'AIzaSyCsDvsmVqlc7Q9096Diy6ucjgoOgJHBYVs',
+    appId: '1:906924248778:web:5a9428f7be17ffa0ddee33',
+    messagingSenderId: '906924248778',
+    projectId: 'react-5a257',
+    authDomain: 'react-5a257.firebaseapp.com',
+    storageBucket: 'react-5a257.appspot.com',
+    measurementId: 'G-X79ET3ZYXL',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDk5R5tUaDs9RupC2_Mm9rQq1zC3xIKRPc',
-    appId: '1:1084331763047:android:c3a7a970e4db5cc835fbc2',
-    messagingSenderId: '1084331763047',
-    projectId: 'hack-a-addict',
-    storageBucket: 'hack-a-addict.firebasestorage.app',
+    apiKey: 'AIzaSyDvyJQBs-3Cf5aAwnWEg0bhSzdYPDYr76A',
+    appId: '1:906924248778:android:4f34256df15b5f86ddee33',
+    messagingSenderId: '906924248778',
+    projectId: 'react-5a257',
+    storageBucket: 'react-5a257.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDo-k_bCEnTnMLk_Ae9yOzq6po1EwH4n1o',
-    appId: '1:1084331763047:ios:e624510ca85e97f735fbc2',
-    messagingSenderId: '1084331763047',
-    projectId: 'hack-a-addict',
-    storageBucket: 'hack-a-addict.firebasestorage.app',
+    apiKey: 'AIzaSyDwfl0usWEihD6FZSF30x_pMIuOvwfwL20',
+    appId: '1:906924248778:ios:a721f36beccb8a45ddee33',
+    messagingSenderId: '906924248778',
+    projectId: 'react-5a257',
+    storageBucket: 'react-5a257.appspot.com',
     iosBundleId: 'com.example.hackaddict',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDo-k_bCEnTnMLk_Ae9yOzq6po1EwH4n1o',
-    appId: '1:1084331763047:ios:e624510ca85e97f735fbc2',
-    messagingSenderId: '1084331763047',
-    projectId: 'hack-a-addict',
-    storageBucket: 'hack-a-addict.firebasestorage.app',
+    apiKey: 'AIzaSyDwfl0usWEihD6FZSF30x_pMIuOvwfwL20',
+    appId: '1:906924248778:ios:a721f36beccb8a45ddee33',
+    messagingSenderId: '906924248778',
+    projectId: 'react-5a257',
+    storageBucket: 'react-5a257.appspot.com',
     iosBundleId: 'com.example.hackaddict',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyC1R2caYG6twmqGZgcp92a_ZHRkHA1BKoI',
-    appId: '1:1084331763047:web:101bae1059ed6d0b35fbc2',
-    messagingSenderId: '1084331763047',
-    projectId: 'hack-a-addict',
-    authDomain: 'hack-a-addict.firebaseapp.com',
-    storageBucket: 'hack-a-addict.firebasestorage.app',
+    apiKey: 'AIzaSyBN_PPGsKvlscP25KnWL4j-M-npmHa6n60',
+    appId: '1:906924248778:web:71a69a71d61741baddee33',
+    messagingSenderId: '906924248778',
+    projectId: 'react-5a257',
+    authDomain: 'react-5a257.firebaseapp.com',
+    storageBucket: 'react-5a257.appspot.com',
+    measurementId: 'G-25SGN43QW8',
   );
+
 }
