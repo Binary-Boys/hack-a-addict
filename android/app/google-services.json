@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1084331763047",
-    "project_id": "hack-a-addict",
-    "storage_bucket": "hack-a-addict.firebasestorage.app"
+    "project_number": "906924248778",
+    "project_id": "react-5a257",
+    "storage_bucket": "react-5a257.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1084331763047:android:c3a7a970e4db5cc835fbc2",
+        "mobilesdk_app_id": "1:906924248778:android:4f34256df15b5f86ddee33",
         "android_client_info": {
           "package_name": "com.example.hackaddict"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDk5R5tUaDs9RupC2_Mm9rQq1zC3xIKRPc"
+          "current_key": "AIzaSyDvyJQBs-3Cf5aAwnWEg0bhSzdYPDYr76A"
         }
       ],
       "services": {
