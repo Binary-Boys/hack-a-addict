@@ -28,26 +28,11 @@ class CommunitiesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+        title: const Text(
+          'Communities',
+          style: TextStyle(color: Color(0xFF2563EB)),
         ),
-        title: Row(
-          children: [
-            Text(
-              'NEXUS',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            Spacer(),
-            Icon(Icons.group),
-            SizedBox(width: 8),
-            Text('Communities'),
-          ],
-        ),
+        backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Column(
