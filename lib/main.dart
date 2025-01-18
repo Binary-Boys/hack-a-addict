@@ -10,6 +10,7 @@ import 'package:hackaddict/pages/login/welcomescreen.dart';
 import 'package:hackaddict/pages/progress_tracker/progress_screen.dart';
 import 'package:hackaddict/pages/report_screen/reportscreen.dart';
 import 'package:hackaddict/pages/saved_posts/saved_posts.dart';
+import 'package:hackaddict/settings_page/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         // '/rehab': (context) => const RehabScreen(),
         '/progress': (context) => const ProgressScreen(),
         // '/care': (context) => const CareScreen(),
-        // '/settings': (context) => const SettingsScreen(),
+        '/settings': (context) => const SettingsPage(),
         // ... existing routes
       },
       // home: const WelcomeScreen(),
