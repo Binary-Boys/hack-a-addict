@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  final void Function()? onTap;
+  final Future< void> Function()? onTap;
   final String text;
 
   const MyButton({
@@ -13,10 +13,10 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap:  onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
+          color: Color(0xFF2563EB),
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.all(25),
