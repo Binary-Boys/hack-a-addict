@@ -65,6 +65,10 @@ flutter:
   assets:
     - assets/images/dove.png
     - assets/images/event1.jpeg
+    - assets/images/red_cross.png
+    - assets/images/lions_club.png
+    - assets/images/vimukthi.png
+    - assets/images/kerala_drug_fighters.png
     - assets/images/
     - assets/icons/
     - assets/
