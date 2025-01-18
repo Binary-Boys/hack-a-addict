@@ -6,7 +6,6 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           children: [
@@ -18,22 +17,20 @@ class NotificationScreen extends StatelessWidget {
                     onTap: () => Navigator.pop(context),
                     child: const Row(
                       children: [
-                        Icon(Icons.arrow_back, color: Colors.blue),
+                        Icon(Icons.arrow_back, color: Color(0xFF2962FF)),
                         SizedBox(width: 8),
                         Text(
                           'NEXUS',
                           style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 20,
+                            color: Color(0xFF2962FF),
                             fontWeight: FontWeight.bold,
+                            fontSize: 24,
                           ),
                         ),
                       ],
                     ),
                   ),
                   const Spacer(),
-                  const Icon(Icons.notifications_outlined,
-                      color: Colors.black87),
                 ],
               ),
             ),
@@ -41,14 +38,14 @@ class NotificationScreen extends StatelessWidget {
               child: ListView(
                 children: const [
                   NotificationItem(
-                    avatar: 'assets/avatar1.png',
+                    avatar: 'assets/images/profile.png',
                     name: 'David John',
                     action: 'Invite Lions Club Tamilnadu',
                     time: 'Just now',
                     hasJoinButton: true,
                   ),
                   NotificationItem(
-                    avatar: 'assets/avatar2.png',
+                    avatar: 'assets/images/profile1.png',
                     name: 'Adnan Safi',
                     action: 'Started following you',
                     time: '5 min ago',
@@ -120,8 +117,18 @@ class NotificationItem extends StatelessWidget {
                       ),
                       const SizedBox(width: 8),
                       ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF2563EB),
+                          // padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
                         onPressed: () {},
-                        child: const Text('Join'),
+                        child: const Text(
+                          'Join',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ],
                   ),

@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hackaddict/pages/components/postView.dart';
+import 'package:hackaddict/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Feedspage extends StatefulWidget {
@@ -57,7 +58,7 @@ class _FeedspageState extends State<Feedspage> {
                   final User? user = FirebaseAuth.instance.currentUser;
 
                   return PostView(
-                      username: user == null ? "Ashwin" : user.email!,
+                      username: getUserEmail(),
                       // profileImgURL: "Post-Images/2025-01-19 01:03:44.101677",
                       profileImgURL: post["imgURL"],
                       postImgURL:
@@ -193,7 +194,7 @@ class _FeedspageState extends State<Feedspage> {
       await fetchPost();
       print("posted");
     } catch (e) {
-      print("^^^^^^$e");
+      print(e);
     }
   }
 

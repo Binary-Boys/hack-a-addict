@@ -1,16 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
 import 'package:hackaddict/pages/login/userlogin.dart';
+import 'package:hackaddict/services.dart';
 
-class UserSignUp extends StatelessWidget {
+class UserSignUp extends StatefulWidget {
   UserSignUp({super.key});
 
+  @override
+  State<UserSignUp> createState() => _UserSignUpState();
+}
+
+class _UserSignUpState extends State<UserSignUp> {
   final _emailController = TextEditingController();
 
   final _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  final _usernameController = TextEditingController();
+  bool isAdmin = false;
 
   Future<void> handleSignUp(context) async {
     try {
@@ -19,6 +29,12 @@ class UserSignUp extends StatelessWidget {
             .createUserWithEmailAndPassword(
                 email: _emailController.text.trim(),
                 password: _passwordController.text.trim());
+        String UID = await getCurrentUserID();
+        await FirebaseFirestore.instance.collection("users").add({
+          "userID": UID,
+          "username": _usernameController.text.trim(),
+          "isAdmin": isAdmin,
+        });
 
         Navigator.pushReplacement(
           context,
@@ -33,6 +49,8 @@ class UserSignUp extends StatelessWidget {
         margin: EdgeInsets.all(20),
         behavior: SnackBarBehavior.floating,
       ));
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -67,6 +85,26 @@ class UserSignUp extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 50),
+                  TextFormField(
+                    controller: _usernameController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Enter valid username';
+                      } else {
+                        return null;
+                      }
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'username',
+                      filled: true,
+                      fillColor: Colors.grey[100],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: _emailController,
                     validator: (value) {
@@ -139,6 +177,24 @@ class UserSignUp extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Sign Up as Admin: "),
+                      Radio<bool>(
+                        value: true,
+                        groupValue: isAdmin,
+                        onChanged: (value) {
+                          setState(() {
+                            isAdmin = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Center(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
