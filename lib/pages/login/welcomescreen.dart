@@ -20,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
-                  height: 150,
+                  height: 200,
                   width: 150,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 128, 86, 224),
@@ -35,8 +35,8 @@ class WelcomeScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
-                  height: 200,
-                  width: 200,
+                  height: 290,
+                  width: 280,
                   decoration: const BoxDecoration(
                     color: Color(0xFF2563EB),
                     borderRadius: BorderRadius.only(
@@ -49,12 +49,12 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          Image.asset('assets/images/dove.png', height: 120),
+          Image.asset('assets/images/dove.png', height: 170),
           const SizedBox(height: 30),
           const Text(
             'NEXUS',
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 40,
               fontWeight: FontWeight.bold,
               color: Color(0xFF2563EB),
             ),
@@ -120,7 +120,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
