@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hackaddict/component/imagePicker.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Feedspage extends StatefulWidget {
   const Feedspage({super.key});
@@ -8,6 +10,8 @@ class Feedspage extends StatefulWidget {
 }
 
 class _FeedspageState extends State<Feedspage> {
+final _captionTextController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,8 +137,13 @@ class _FeedspageState extends State<Feedspage> {
             )));
   }
 
+
+
+
   void showBottomSheet(context) {
     showModalBottomSheet(
+      isScrollControlled: true,
+      elevation: 700,
         context: context,
         builder: (ctx1) {
           return Padding(
@@ -155,9 +164,16 @@ class _FeedspageState extends State<Feedspage> {
                         onPressed: () {
                           Navigator.of(ctx1).pop();
                         },
-                        child: Icon(Icons.close))
+                        child: Icon(Icons.close)),
+                       
                   ],
+                ), PickImage(),
+                TextFormField(
+                  controller: _captionTextController,
+                decoration: InputDecoration(
+                  hintText: "Caption"
                 ),
+                )
               ],
             ),
           );
