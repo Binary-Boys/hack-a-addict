@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 
 class PostView extends StatelessWidget {
   final String username, profileImgURL, postImgURL, caption;
-
+  // final List<Map<String, dynamic>> posts;
   const PostView(
       {super.key,
       required this.username,
       required this.profileImgURL,
       required this.postImgURL,
       required this.caption});
+
+  // const PostView({super.key, required this.posts});
 
   Future<String> getDownloadURL(String filePath) async {
     final ref = FirebaseStorage.instance.ref(filePath);
@@ -72,7 +74,7 @@ class PostView extends StatelessWidget {
                   children: [
                     Icon(Icons.favorite, color: Colors.red, size: 20),
                     SizedBox(
-                      height: 10,
+                      width: 10,
                     ),
                     Text(caption)
                   ],
