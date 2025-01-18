@@ -9,73 +9,75 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            // Logo and doves
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    height: 150,
-                    width: 140,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 128, 86, 224),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(200),
-                      ),
+      body:
+          // padding: const EdgeInsets.all(20.0),
+          Column(
+        children: [
+          // Logo and doves
+          Stack(
+            // alignment: Alignment.center,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 128, 86, 224),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(200),
                     ),
-                    margin: EdgeInsets.zero,
-                    padding: EdgeInsets.zero,
                   ),
+                  margin: EdgeInsets.zero,
+                  padding: EdgeInsets.zero,
                 ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF2563EB),
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(200),
-                      ),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF2563EB),
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(200),
                     ),
-                    margin: EdgeInsets.zero,
-                    padding: EdgeInsets.zero,
                   ),
+                  margin: EdgeInsets.zero,
+                  padding: EdgeInsets.zero,
                 ),
-              ],
-            ),
-            Image.asset('assets/images/dove.png', height: 120),
-            const SizedBox(height: 30),
-            const Text(
-              'NEXUS',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2563EB),
               ),
+            ],
+          ),
+          Image.asset('assets/images/dove.png', height: 120),
+          const SizedBox(height: 30),
+          const Text(
+            'NEXUS',
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF2563EB),
             ),
-            const Text(
-              'Reconnecting to Life',
-              style: TextStyle(
-                fontSize: 18,
-                color: Color(0xFF2563EB),
-              ),
+          ),
+          const Text(
+            'Reconnecting to Life',
+            style: TextStyle(
+              fontSize: 18,
+              color: Color(0xFF2563EB),
             ),
-            const SizedBox(height: 20),
-            const Text(
-              '"Rebuilding life\'s in just a click"',
-              style: TextStyle(
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-              ),
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            '"Rebuilding life\'s in just a click"',
+            style: TextStyle(
+              fontSize: 16,
+              fontStyle: FontStyle.italic,
             ),
-            const Spacer(),
-            Row(
+          ),
+          const Spacer(),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(
               children: [
                 Expanded(
                   child: ElevatedButton(
@@ -118,8 +120,8 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
