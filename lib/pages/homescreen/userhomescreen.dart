@@ -74,7 +74,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               borderRadius: BorderRadius.circular(50),
             ),
             child: IconButton(
-              icon: const Icon(Icons.settings),
+              icon: Icon(Icons.search, color: Colors.white),
               onPressed: () {},
               color: Colors.white,
             ),
