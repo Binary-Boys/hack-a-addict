@@ -1,10 +1,13 @@
+import 'dart:ffi';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:hackaddict/pages/components/postView.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Feedspage extends StatefulWidget {
@@ -22,109 +25,29 @@ class _FeedspageState extends State<Feedspage> {
     return Scaffold(
         body: Column(
           children: [
+            //for top spacing
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(25),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(1),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search for community...',
-                    hintStyle: TextStyle(color: Colors.grey[400]),
-                    prefixIcon: const Icon(Icons.search, color: Colors.grey),
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 12),
-                  ),
-                ),
-              ),
+              height: 10,
+              color: Colors.white,
             ),
+
             Expanded(
-              child: ListView.builder(
+              child: ListView.separated(
                 padding: const EdgeInsets.all(16),
-                itemCount: 5, // Increased number of posts
-                itemBuilder: (context, index) {
-                  final users = [
-                    {'name': 'Erin Yeager', 'title': 'Webie'},
-                    {'name': 'Manas G', 'title': 'Wildlife'},
-                    {'name': 'Alex Chen', 'title': 'Technology'},
-                    {'name': 'Sarah Kim', 'title': 'Design'},
-                    {'name': 'John Doe', 'title': 'Architecture'},
-                  ];
-                  return Column(
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        leading: const CircleAvatar(
-                          backgroundImage: AssetImage('assets/profile.png'),
-                        ),
-                        title: Text(
-                          users[index]['name']!,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: const Text(
-                          'CEA Student',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset(
-                                'assets/post_${index + 1}.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Row(
-                                children: [
-                                  const Icon(Icons.favorite,
-                                      color: Colors.red, size: 20),
-                                  Text(' ${50 - index}k'),
-                                  const SizedBox(width: 16),
-                                  Image.asset('assets/comment_icon.png',
-                                      height: 20),
-                                  Text(' ${38 - index}k'),
-                                  const SizedBox(width: 16),
-                                  const Icon(Icons.share,
-                                      color: Colors.grey, size: 20),
-                                  const Spacer(),
-                                  const Icon(Icons.bookmark_border,
-                                      color: Colors.grey, size: 20),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                itemCount: 5,
+                separatorBuilder: (ctx, idx) {
+                  return SizedBox(
+                    height: 20,
                   );
+                },
+                itemBuilder: (context, index) {
+                  //new widget for post display
+                  return PostView(
+                      username: "asdfsf",
+                      profileImgURL: "Post-Images/2025-01-18 15:54:18.661837",
+                      postImgURL:
+                          "gs://react-5a257.appspot.com/Post-Images/2025-01-18 15:54:18.661837",
+                      caption: "asdf");
                 },
               ),
             ),
@@ -236,7 +159,6 @@ class _FeedspageState extends State<Feedspage> {
 
   Future<void> uploadPost(File file) async {
     try {
-      
       // upload image
       final postImgRef = FirebaseStorage.instance
           .ref('Post-Images')
@@ -256,6 +178,20 @@ class _FeedspageState extends State<Feedspage> {
       print("posted");
     } catch (e) {
       print("^^^^^^$e");
+    }
+  }
+
+  Future<void> fetchPost() async {
+    final storageRef = FirebaseStorage.instance.ref("Post-Images");
+    final islandRef =
+        storageRef.child("Post-Images/2025-01-18 15:54:18.661837");
+    try {
+      // const oneMegabyte = 1024 * 1024;
+      final Uint8List? data = await islandRef.getData();
+      print(data);
+      // Data for "images/island.jpg" is returned, use this as needed.
+    } on FirebaseException catch (e) {
+      // Handle any errors.
     }
   }
 }
