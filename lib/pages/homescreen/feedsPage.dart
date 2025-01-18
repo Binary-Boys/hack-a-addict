@@ -1,5 +1,10 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:hackaddict/component/imagePicker.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Feedspage extends StatefulWidget {
@@ -10,7 +15,7 @@ class Feedspage extends StatefulWidget {
 }
 
 class _FeedspageState extends State<Feedspage> {
-final _captionTextController = TextEditingController();
+  final _captionTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -137,13 +142,10 @@ final _captionTextController = TextEditingController();
             )));
   }
 
-
-
-
   void showBottomSheet(context) {
     showModalBottomSheet(
-      isScrollControlled: true,
-      elevation: 700,
+        isScrollControlled: true,
+        elevation: 700,
         context: context,
         builder: (ctx1) {
           return Padding(
@@ -163,20 +165,97 @@ final _captionTextController = TextEditingController();
                     TextButton(
                         onPressed: () {
                           Navigator.of(ctx1).pop();
+                          image = null;
+                          _captionTextController.text = '';
                         },
                         child: Icon(Icons.close)),
-                       
                   ],
-                ), PickImage(),
+                ),
+                Center(
+                    child: image == null
+                        ? ElevatedButton(
+                            style: ButtonStyle(
+                                // backgroundColor: Colors.blue
+                                ),
+                            onPressed: () {
+                              _pickImageFromGallery();
+                            },
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.photo_library,
+                                  color: Colors.black,
+                                ),
+                                Text("Select an Image")
+                              ],
+                            ))
+                        : Container(
+                            width: 300,
+                            height: 300,
+                            child: Image.file(
+                              image!,
+                              scale: 0.7,
+                            ))),
                 TextFormField(
                   controller: _captionTextController,
-                decoration: InputDecoration(
-                  hintText: "Caption"
+                  decoration: InputDecoration(hintText: "Caption"),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () async {
+                          Navigator.of(ctx1).pop();
+                          await uploadPost(image!);
+                          image = null;
+                          _captionTextController.text = '';
+                        },
+                        child: Text(
+                          "Post",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF2563EB))),
+                  ],
                 )
               ],
             ),
           );
         });
+  }
+
+  File? image;
+  Future<void> _pickImageFromGallery() async {
+    final pickerFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      image = File(pickerFile!.path);
+    });
+  }
+
+  Future<void> uploadPost(File file) async {
+    try {
+      
+      // upload image
+      final postImgRef = FirebaseStorage.instance
+          .ref('Post-Images')
+          .child(DateTime.now().toString());
+
+      final postImgSnapShot = await postImgRef.putFile(file);
+      final imgURL = await postImgSnapShot.ref.getDownloadURL();
+
+      //update the post in DB
+      await FirebaseFirestore.instance.collection("posts").add({
+        "caption": _captionTextController.text.trim(),
+        "imgURL": imgURL,
+        "likes": ['hlasdf', 'asdfds'],
+        "postTime": FieldValue.serverTimestamp(),
+        "userID": FirebaseAuth.instance.currentUser?.uid
+      });
+      print("posted");
+    } catch (e) {
+      print("^^^^^^$e");
+    }
   }
 }
