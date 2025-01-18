@@ -19,6 +19,13 @@ class Feedspage extends StatefulWidget {
 
 class _FeedspageState extends State<Feedspage> {
   final _captionTextController = TextEditingController();
+  List<Map<String, dynamic>> posts = [];
+  @override
+  void initState() {
+    fetchPost();
+    // posts = fetchPost();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +37,10 @@ class _FeedspageState extends State<Feedspage> {
               height: 10,
               color: Colors.white,
             ),
-
             Expanded(
               child: ListView.separated(
                 padding: const EdgeInsets.all(16),
-                itemCount: 5,
+                itemCount: posts.length,
                 separatorBuilder: (ctx, idx) {
                   return SizedBox(
                     height: 20,
@@ -42,12 +48,21 @@ class _FeedspageState extends State<Feedspage> {
                 },
                 itemBuilder: (context, index) {
                   //new widget for post display
+                  // username: posts[index]["username"],
+
+                  final post = posts[index];
+                  print(post["imgURL"]);
+                  // print(
+                  //     "askdfhklshfsdhjshfkfhskfjaskhsafh66666666666666666666666666666");
+                  final User? user = FirebaseAuth.instance.currentUser;
+
                   return PostView(
-                      username: "asdfsf",
-                      profileImgURL: "Post-Images/2025-01-18 15:54:18.661837",
+                      username: user == null ? "Ashwin" : user.email!,
+                      // profileImgURL: "Post-Images/2025-01-19 01:03:44.101677",
+                      profileImgURL: post["imgURL"],
                       postImgURL:
                           "gs://react-5a257.appspot.com/Post-Images/2025-01-18 15:54:18.661837",
-                      caption: "asdf");
+                      caption: post["caption"]);
                 },
               ),
             ),
@@ -160,9 +175,9 @@ class _FeedspageState extends State<Feedspage> {
   Future<void> uploadPost(File file) async {
     try {
       // upload image
-      final postImgRef = FirebaseStorage.instance
-          .ref('Post-Images')
-          .child(DateTime.now().toString());
+      final filename = DateTime.now().toString();
+      final postImgRef =
+          FirebaseStorage.instance.ref('Post-Images').child(filename);
 
       final postImgSnapShot = await postImgRef.putFile(file);
       final imgURL = await postImgSnapShot.ref.getDownloadURL();
@@ -170,11 +185,12 @@ class _FeedspageState extends State<Feedspage> {
       //update the post in DB
       await FirebaseFirestore.instance.collection("posts").add({
         "caption": _captionTextController.text.trim(),
-        "imgURL": imgURL,
+        "imgURL": 'Post-Images/$filename',
         "likes": ['hlasdf', 'asdfds'],
         "postTime": FieldValue.serverTimestamp(),
         "userID": FirebaseAuth.instance.currentUser?.uid
       });
+      await fetchPost();
       print("posted");
     } catch (e) {
       print("^^^^^^$e");
@@ -182,16 +198,23 @@ class _FeedspageState extends State<Feedspage> {
   }
 
   Future<void> fetchPost() async {
-    final storageRef = FirebaseStorage.instance.ref("Post-Images");
-    final islandRef =
-        storageRef.child("Post-Images/2025-01-18 15:54:18.661837");
+    final db = await FirebaseFirestore.instance;
+
     try {
-      // const oneMegabyte = 1024 * 1024;
-      final Uint8List? data = await islandRef.getData();
-      print(data);
-      // Data for "images/island.jpg" is returned, use this as needed.
+      final querySnapshot = await db.collection("posts").get();
+      final fetchedPosts = querySnapshot.docs
+          .map((doc) => doc.data() as Map<String, dynamic>)
+          .toList();
+
+      setState(() {
+        posts = fetchedPosts;
+      });
+
+      // print(posts[0]["userID"]);
     } on FirebaseException catch (e) {
       // Handle any errors.
+      print(e.message);
     }
+    // return [];
   }
 }
