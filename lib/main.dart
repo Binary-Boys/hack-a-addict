@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hackaddict/firebase_options.dart';
-import 'package:hackaddict/pages/Profile/profile.dart';
 import 'package:hackaddict/pages/events_module/events_screen.dart';
 import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/profile': (context) => const ProfileScreen(),
+        //'/profile': (context) => const ProfileScreen(),
         '/report': (context) => const ReportScreen(),
         '/events': (context) => const EventsScreen(),
         '/saved': (context) => const SavedPostsScreen(),

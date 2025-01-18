@@ -33,7 +33,7 @@ class _EventsScreenState extends State<EventsScreen> {
       date: 'Sat, May 1',
       time: '7:00 PM',
       location: 'Online - Gmeet',
-      imageUrl: 'assets/music.png',
+      imageUrl: 'assets/images/event1.jpeg',
       backgroundColor: Colors.deepPurple,
     ),
     Event(
@@ -41,7 +41,7 @@ class _EventsScreenState extends State<EventsScreen> {
       date: 'Sun, May 2',
       time: '6:00 PM',
       location: 'Online - Zoom',
-      imageUrl: 'assets/tech.png',
+      imageUrl: 'assets/images/event2.png',
       backgroundColor: Colors.blue[700]!,
     ),
     Event(
@@ -49,7 +49,7 @@ class _EventsScreenState extends State<EventsScreen> {
       date: 'Mon, May 3',
       time: '5:30 PM',
       location: 'Community Center',
-      imageUrl: 'assets/health.png',
+      imageUrl: 'assets/images/event3.png',
       backgroundColor: Colors.green[700]!,
     ),
   ];
