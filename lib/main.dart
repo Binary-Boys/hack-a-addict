@@ -6,6 +6,7 @@ import 'package:hackaddict/pages/Profile/profile.dart';
 import 'package:hackaddict/pages/events_module/events_screen.dart';
 import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
+import 'package:hackaddict/pages/notification/notification_screen.dart';
 import 'package:hackaddict/pages/progress_tracker/progress_screen.dart';
 import 'package:hackaddict/pages/report_screen/reportscreen.dart';
 import 'package:hackaddict/pages/saved_posts/saved_posts.dart';
@@ -18,7 +19,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/report': (context) => const ReportScreen(),
         '/events': (context) => const EventsScreen(),
         '/saved': (context) => const SavedPostsScreen(),
+        '/notification': (context) => const NotificationScreen(),
         // '/rehab': (context) => const RehabScreen(),
         '/progress': (context) => const ProgressScreen(),
         // '/care': (context) => const CareScreen(),
@@ -51,7 +54,6 @@ class MyApp extends StatelessWidget {
               );
             }
             if (snapsot.data != null) {
-
               return UserHomeScreen();
             }
             return const WelcomeScreen();

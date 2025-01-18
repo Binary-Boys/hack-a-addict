@@ -6,6 +6,7 @@ import 'package:hackaddict/pages/chat_module/chatscreen.dart';
 import 'package:hackaddict/pages/events_module/events_screen.dart';
 import 'package:hackaddict/pages/homescreen/feedsPage.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
+import 'package:hackaddict/services.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({super.key});
@@ -15,6 +16,11 @@ class UserHomeScreen extends StatefulWidget {
 }
 
 class _UserHomeScreenState extends State<UserHomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   int _selectedIndex = 0;
 
   Future<void> handleSignOut(context) async {
@@ -63,7 +69,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             ),
             child: IconButton(
               icon: const Icon(Icons.notifications_none),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("/notification");
+              },
               color: Colors.grey[700],
             ),
           ),
@@ -97,8 +105,10 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     backgroundImage: AssetImage('assets/profile.png'),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'Eren Yeager',
+                  Text(
+                    getUserEmail(),
+
+                    // getUserName().toString(),
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -112,11 +122,17 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               title: 'My Profile',
               onTap: () => Navigator.pushNamed(context, '/profile'),
             ),
-            _buildDrawerItem(
-              icon: Icons.warning_outlined,
-              title: 'Report Hotspot',
-              onTap: () => Navigator.pushNamed(context, '/report'),
-            ),
+            (isCurrentUserAdmin() == false)
+                ? _buildDrawerItem(
+                    icon: Icons.warning_outlined,
+                    title: 'Report Hotspot',
+                    onTap: () => Navigator.pushNamed(context, '/report'),
+                  )
+                : _buildDrawerItem(
+                    icon: Icons.warning_outlined,
+                    title: 'View Hotspot',
+                    onTap: () => Navigator.pushNamed(context, '/report'),
+                  ),
             _buildDrawerItem(
               icon: Icons.calendar_today,
               title: 'Events',
