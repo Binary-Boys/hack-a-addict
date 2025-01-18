@@ -47,6 +47,5 @@ Future<String> getUserName() async {
 
   final data = await db.collection("users").where("userID", isEqualTo: userID)
       as Map<String, dynamic>;
-  print('33333333333333333333333333$data["username"]');
   return data["username"];
 }
