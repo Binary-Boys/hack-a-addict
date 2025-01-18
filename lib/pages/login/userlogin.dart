@@ -62,7 +62,7 @@ class UserLoginScreen extends StatelessWidget {
                     color: Colors.black87,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 70),
                 TextFormField(
                   controller: _emailController,
                   validator: (value) {
@@ -151,23 +151,6 @@ class UserLoginScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('assets/google_icon.png', height: 24),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('assets/facebook_icon.png', height: 24),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('assets/apple_icon.png', height: 24),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
