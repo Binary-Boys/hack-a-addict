@@ -14,7 +14,6 @@ class WelcomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              const Spacer(),
               // Logo and doves
               Stack(
                 alignment: Alignment.center,
@@ -28,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Image.asset('assets/doves_logo.png', height: 120),
+                  Image.asset('assets/images/doves_logo.png', height: 120),
                 ],
               ),
               const SizedBox(height: 30),
