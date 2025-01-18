@@ -12,7 +12,7 @@ class _SavedPostsScreenState extends State<SavedPostsScreen> {
     SavedPost(
       username: 'Erin Yeager',
       userRole: 'CEA Student',
-      imageUrl: 'assets/webie.jpg',
+      imageUrl: 'assets/images/event2.png',
       title: 'Webie',
       subtitle: 'Your software solutions',
       likes: 50000,
@@ -28,7 +28,7 @@ class _SavedPostsScreenState extends State<SavedPostsScreen> {
     SavedPost(
       username: 'Alex Johnson',
       userRole: 'UI Designer',
-      imageUrl: 'assets/design.jpg',
+      imageUrl: 'assets/images/event1.jpeg',
       title: 'Design Hub',
       subtitle: 'Creative design solutions',
       likes: 35000,
