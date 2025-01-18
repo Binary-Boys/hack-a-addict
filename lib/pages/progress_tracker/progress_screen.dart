@@ -11,55 +11,58 @@ class ProgressScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Row(
-                      children: [
-                        Icon(Icons.arrow_back),
-                        SizedBox(width: 8),
-                        Text(
-                          'Progress Tracker',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.arrow_back),
+                          SizedBox(width: 8),
+                          Text(
+                            'Progress Tracker',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                    const Spacer(),
+                    const Icon(Icons.notifications_outlined),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  'Hi, there 👋',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const Spacer(),
-                  const Icon(Icons.notifications_outlined),
-                ],
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                'Hi, Mert 👋',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
                 ),
-              ),
-              const Text(
-                "Let's make habits together!",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16,
+                const Text(
+                  "Let's make habits together!",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              const WeekDayPicker(),
-              const SizedBox(height: 24),
-              const ProgressIndicator(),
-              const SizedBox(height: 24),
-              const ChallengesSection(),
-              const SizedBox(height: 24),
-              const HabitsSection(),
-            ],
+                const SizedBox(height: 24),
+                const WeekDayPicker(),
+                const SizedBox(height: 24),
+                const ProgressIndicator(),
+                const SizedBox(height: 24),
+                const ChallengesSection(),
+                const SizedBox(height: 24),
+                const HabitsSection(),
+              ],
+            ),
           ),
         ),
       ),

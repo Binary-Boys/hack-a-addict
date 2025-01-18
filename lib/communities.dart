@@ -4,25 +4,27 @@ class CommunitiesPage extends StatelessWidget {
   final List<Community> topCommunities = [
     Community(
       name: 'Kerala Drug fighters',
-      icon: 'assets/kerala_drug_fighters.png',
+      icon: 'assets/images/kerala_drug_fighters.png',
       onTap: () => navigateToCommunityHome(),
     ),
     Community(
       name: 'Vimukthi Excise Kerala',
-      icon: 'assets/vimukthi.png',
+      icon: 'assets/images/vimukthi.png',
       onTap: () => navigateToCommunityHome(),
     ),
     Community(
       name: 'Lions club Trivandrum',
-      icon: 'assets/lions_club.png',
+      icon: 'assets/images/lions_club.png',
       onTap: () => navigateToCommunityHome(),
     ),
     Community(
       name: 'Red Cross kerala',
-      icon: 'assets/red_cross.png',
+      icon: 'assets/images/red_cross.png',
       onTap: () => navigateToCommunityHome(),
     ),
   ];
+
+  CommunitiesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,18 +54,21 @@ class CommunitiesPage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text('Filters'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
+                    child: Text(
+                      'Filters',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               height: 120,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -88,7 +93,7 @@ class CommunitiesPage extends StatelessWidget {
                       unselectedLabelColor: Colors.grey,
                       indicatorColor: Colors.blue,
                     ),
-                    Container(
+                    SizedBox(
                       height: 500, // Adjust based on content
                       child: TabBarView(
                         children: [
@@ -127,7 +132,7 @@ class Community {
 class CommunityCard extends StatelessWidget {
   final Community community;
 
-  const CommunityCard({required this.community});
+  const CommunityCard({super.key, required this.community});
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +163,8 @@ class CommunityCard extends StatelessWidget {
 }
 
 class UpdatesTab extends StatelessWidget {
+  const UpdatesTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -181,6 +188,8 @@ class UpdatesTab extends StatelessWidget {
 }
 
 class CreatePostCard extends StatelessWidget {
+  const CreatePostCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -215,13 +224,13 @@ class CreatePostCard extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Publish Post'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
+                  child: Text('Post', style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -241,6 +250,7 @@ class CommunityPost extends StatelessWidget {
   final int comments;
 
   const CommunityPost({
+    super.key,
     required this.communityName,
     required this.authorName,
     required this.authorTitle,
@@ -313,6 +323,8 @@ class CommunityPost extends StatelessWidget {
 }
 
 class MyCommunititesTab extends StatelessWidget {
+  const MyCommunititesTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
