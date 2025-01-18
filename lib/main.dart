@@ -5,7 +5,6 @@ import 'package:hackaddict/firebase_options.dart';
 import 'package:hackaddict/pages/Profile/profile.dart';
 import 'package:hackaddict/pages/events_module/events_screen.dart';
 import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
-import 'package:hackaddict/pages/login/userlogin.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
 import 'package:hackaddict/pages/progress_tracker/progress_screen.dart';
 import 'package:hackaddict/pages/report_screen/reportscreen.dart';

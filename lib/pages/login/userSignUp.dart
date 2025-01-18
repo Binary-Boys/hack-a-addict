@@ -138,7 +138,7 @@ class UserSignUp extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   Center(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -160,24 +160,6 @@ class UserSignUp extends StatelessWidget {
                     ],
                   )),
                   const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/google_icon.png', height: 24),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon:
-                            Image.asset('assets/facebook_icon.png', height: 24),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/apple_icon.png', height: 24),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             )),
