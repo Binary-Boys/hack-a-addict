@@ -50,7 +50,7 @@ class SettingsPage extends StatelessWidget {
                                   backgroundColor: Colors.grey.shade200,
                                   child: ClipOval(
                                     child: Image.network(
-                                      'https://via.placeholder.com/100',
+                                      'assets/images/profile4.png',
                                       width: 100,
                                       height: 100,
                                       fit: BoxFit.cover,

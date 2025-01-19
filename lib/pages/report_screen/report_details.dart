@@ -102,7 +102,7 @@ class ReportDetails extends StatelessWidget {
             //     // Implement image upload
             //   },
             // ),
-            Container(
+            SizedBox(
               width: 400,
               height: 300,
               child:
@@ -117,7 +117,7 @@ class ReportDetails extends StatelessWidget {
             //     // Implement location selection
             //   },
             // ),
-            Container(
+            SizedBox(
               width: 400,
               height: 300,
               child: Image(image: AssetImage('assets/images/location.png')),
