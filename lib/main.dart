@@ -7,6 +7,7 @@ import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
 import 'package:hackaddict/pages/notification/notification_screen.dart';
 import 'package:hackaddict/pages/progress_tracker/progress_screen.dart';
+import 'package:hackaddict/pages/report_screen/report_received.dart';
 import 'package:hackaddict/pages/report_screen/reportscreen.dart';
 import 'package:hackaddict/pages/saved_posts/saved_posts.dart';
 import 'package:hackaddict/settings_page/settings.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         //'/profile': (context) => const ProfileScreen(),
         '/report': (context) => const ReportScreen(),
+        '/view-report': (context) => ReportsListScreen(),
         '/events': (context) => const EventsScreen(),
         '/saved': (context) => const SavedPostsScreen(),
         '/notification': (context) => const NotificationScreen(),

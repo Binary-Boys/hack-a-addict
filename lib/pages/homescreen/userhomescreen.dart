@@ -131,7 +131,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 : _buildDrawerItem(
                     icon: Icons.warning_outlined,
                     title: 'View Hotspot',
-                    onTap: () => Navigator.pushNamed(context, '/report'),
+                    onTap: () => Navigator.pushNamed(context, '/view-report'),
                   ),
             _buildDrawerItem(
               icon: Icons.calendar_today,

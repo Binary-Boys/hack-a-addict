@@ -1,5 +1,6 @@
 // reports_list_screen.dart
 import 'package:flutter/material.dart';
+import 'package:hackaddict/pages/report_screen/report_details.dart';
 
 class ReportsListScreen extends StatelessWidget {
   const ReportsListScreen({super.key});
@@ -86,7 +87,8 @@ class ReportsListScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          // Implement show functionality
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ReportDetails()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF2962FF),
@@ -94,7 +96,10 @@ class ReportsListScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        child: const Text('Show'),
+                        child: const Text(
+                          'Show',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                       const SizedBox(width: 12),
                       Text(
