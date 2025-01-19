@@ -1,13 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hackaddict/communities.dart';
 import 'package:hackaddict/firebase_options.dart';
+import 'package:hackaddict/pages/care/careScreen.dart';
 import 'package:hackaddict/pages/events_module/events_screen.dart';
 import 'package:hackaddict/pages/homescreen/userhomescreen.dart';
 import 'package:hackaddict/pages/login/welcomescreen.dart';
 import 'package:hackaddict/pages/notification/notification_screen.dart';
 import 'package:hackaddict/pages/proflle_screen/profileScreen.dart';
 import 'package:hackaddict/pages/progress_tracker/progress_screen.dart';
+import 'package:hackaddict/pages/rehabscreen/rehabScreen.dart';
 import 'package:hackaddict/pages/report_screen/report_received.dart';
 import 'package:hackaddict/pages/report_screen/reportscreen.dart';
 import 'package:hackaddict/pages/saved_posts/saved_posts.dart';
@@ -40,9 +43,9 @@ class MyApp extends StatelessWidget {
         '/events': (context) => const EventsScreen(),
         '/saved': (context) => const SavedPostsScreen(),
         '/notification': (context) => const NotificationScreen(),
-        // '/rehab': (context) => const RehabScreen(),
+        '/rehab': (context) => Rehabscreen(),
         '/progress': (context) => const ProgressScreen(),
-        // '/care': (context) => const CareScreen(),
+        '/care': (context) => Carescreen(),
         '/settings': (context) => const SettingsPage(),
         // ... existing routes
       },
