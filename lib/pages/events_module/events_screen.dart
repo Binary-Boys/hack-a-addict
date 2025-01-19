@@ -58,10 +58,30 @@ class _EventsScreenState extends State<EventsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Events',
+          style: TextStyle(color: Color(0xFF2563EB)),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add, size: 28, color: Color(0xFF2563EB)),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.search, size: 27, color: Color(0xFF2563EB)),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert, color: Color(0xFF2563EB)),
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
             _buildCalendar(),
             Expanded(
               child: ListView(
@@ -76,37 +96,6 @@ class _EventsScreenState extends State<EventsScreen> {
         ),
       ),
       floatingActionButton: _buildAddButton(),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        children: [
-          const BackButton(),
-          const Text(
-            'Events',
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Spacer(),
-          IconButton(
-            icon: const Icon(Icons.add, size: 28),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.search, size: 28),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
-      ),
     );
   }
 

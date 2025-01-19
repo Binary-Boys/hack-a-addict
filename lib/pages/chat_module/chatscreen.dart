@@ -7,11 +7,6 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(
-        //   icon: const Icon(Icons.arrow_back),
-        //   onPressed: () => Navigator.pop(context),
-        //   color: const Color(0xFF2563EB),
-        // ),
         title: const Text(
           'Messages',
           style: TextStyle(color: Color(0xFF2563EB)),
