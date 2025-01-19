@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -109,12 +109,12 @@ class ChatListItem extends StatelessWidget {
   final int? unreadCount;
 
   const ChatListItem({
-    Key? key,
+    super.key,
     required this.name,
     required this.message,
     required this.time,
     this.unreadCount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

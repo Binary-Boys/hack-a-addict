@@ -6,7 +6,7 @@ import 'package:hackaddict/pages/login/userlogin.dart';
 import 'package:hackaddict/services.dart';
 
 class UserSignUp extends StatefulWidget {
-  UserSignUp({super.key});
+  const UserSignUp({super.key});
 
   @override
   State<UserSignUp> createState() => _UserSignUpState();
@@ -29,7 +29,7 @@ class _UserSignUpState extends State<UserSignUp> {
             .createUserWithEmailAndPassword(
                 email: _emailController.text.trim(),
                 password: _passwordController.text.trim());
-        String UID = await getCurrentUserID();
+        String UID = getCurrentUserID();
         await FirebaseFirestore.instance.collection("users").add({
           "userID": UID,
           "username": _usernameController.text.trim(),

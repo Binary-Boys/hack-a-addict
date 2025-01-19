@@ -202,7 +202,7 @@ class CreatePostCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  // Add user avatar
+                  backgroundImage: AssetImage('assets/images/profile4.png'),
                 ),
                 SizedBox(width: 16),
                 Expanded(
@@ -277,7 +277,7 @@ class CommunityPost extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  // Add author avatar
+                  backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
                 SizedBox(width: 16),
                 Column(

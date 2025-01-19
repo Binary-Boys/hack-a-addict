@@ -18,9 +18,10 @@ class PostView extends StatelessWidget {
     return await ref.getDownloadURL();
   }
 
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
-      future: getDownloadURL('$profileImgURL'),
+      future: getDownloadURL(profileImgURL),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());

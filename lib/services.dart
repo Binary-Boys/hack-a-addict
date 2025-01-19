@@ -24,7 +24,7 @@ Future<bool> isCurrentUserAdmin() async {
   final db = FirebaseFirestore.instance;
   bool isAdmin = false;
   String userID = getCurrentUserID();
-  final docRef = await db.collection("users").doc(userID);
+  final docRef = db.collection("users").doc(userID);
   await docRef.get().then(
     (DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
@@ -41,11 +41,11 @@ Future<bool> isCurrentUserAdmin() async {
 Future<String> getUserName() async {
   final db = FirebaseFirestore.instance;
 
-  String userID = await getCurrentUserID();
+  String userID = getCurrentUserID();
 
   String username = 'Ashwin Wilson';
 
-  final data = await db.collection("users").where("userID", isEqualTo: userID)
+  final data = db.collection("users").where("userID", isEqualTo: userID)
       as Map<String, dynamic>;
   return data["username"];
 }
