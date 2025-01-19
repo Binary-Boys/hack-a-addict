@@ -122,17 +122,16 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               title: 'My Profile',
               onTap: () => Navigator.pushNamed(context, '/profile'),
             ),
-            (isCurrentUserAdmin() == false)
-                ? _buildDrawerItem(
-                    icon: Icons.warning_outlined,
-                    title: 'Report Hotspot',
-                    onTap: () => Navigator.pushNamed(context, '/report'),
-                  )
-                : _buildDrawerItem(
-                    icon: Icons.warning_outlined,
-                    title: 'View Hotspot',
-                    onTap: () => Navigator.pushNamed(context, '/view-report'),
-                  ),
+            _buildDrawerItem(
+              icon: Icons.warning_outlined,
+              title: 'Report Hotspot',
+              onTap: () => Navigator.pushNamed(context, '/report'),
+            ),
+            _buildDrawerItem(
+              icon: Icons.warning_outlined,
+              title: 'View Hotspot',
+              onTap: () => Navigator.pushNamed(context, '/view-report'),
+            ),
             _buildDrawerItem(
               icon: Icons.calendar_today,
               title: 'Events',
